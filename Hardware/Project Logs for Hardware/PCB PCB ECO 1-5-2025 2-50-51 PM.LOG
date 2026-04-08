@@ -1,0 +1,24 @@
+Removed Pin From Net: NetName=+5V Pin=C24-1
+Removed Pin From Net: NetName=+5V Pin=C25-1
+Change Component DesignItemId : Designator=C24 Old DesignItemId=Tu tantalum 1uF 25V SMD3216 New DesignItemId=Tu 0805 105 50V 10%
+Change Component DesignItemId : Designator=C25 Old DesignItemId=Tu tantalum 1uF 25V SMD3216 New DesignItemId=Tu 0805 105 50V 10%
+Change Component Footprint: Designator=C24 Old Footprint=tu tantalum smd3216 New Footprint=tu 0805
+Change Component Footprint: Designator=C25 Old Footprint=tu tantalum smd3216 New Footprint=tu 0805
+Change Component Comment : Designator=C24 Old Comment=1uF New Comment=105
+Change Component Comment : Designator=C25 Old Comment=1uF New Comment=105
+Change component parameters: Designator = "C24" ("C24"); Footprint = "tu tantalum smd3216"; UniqueID = "\AAHWLGEJ" ("\AAHWLGEJ")
+Change component parameters (AddParameter): Name = "Chung_Loai"; Value = "Dán"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Don_Vi"; Value = "Con"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Kieu_Chan"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Ma_Hang"; Value = "MH004552"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "So_Chan"; Value = "2"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Ten_Linh_Kien"; Value = "T? 0805 105-1uF 10% 50V"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C25" ("C25"); Footprint = "tu tantalum smd3216"; UniqueID = "\OESUYBTC" ("\OESUYBTC")
+Change component parameters (AddParameter): Name = "Chung_Loai"; Value = "Dán"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Don_Vi"; Value = "Con"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Kieu_Chan"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Ma_Hang"; Value = "MH004552"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "So_Chan"; Value = "2"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Ten_Linh_Kien"; Value = "T? 0805 105-1uF 10% 50V"; VariantName = "[No Variations]"
+Added Member To Class: ClassName=main Member=Component C9 104
+Added Member To Class: ClassName=main Member=Component IC1 PCM5102APWR

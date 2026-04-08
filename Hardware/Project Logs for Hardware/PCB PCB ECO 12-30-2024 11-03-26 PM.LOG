@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=Vout+ Pin=SW1-2
+Added Pin To Net: NetName=Vout+ Pin=C3-1
+Added Pin To Net: NetName=Vout+ Pin=R1-2
+Added Pin To Net: NetName=Vout+ Pin=SW1-1
+Added Pin To Net: NetName=Vout+ Pin=U1-5
+Added Pin To Net: NetName=NetKF1_1 Pin=KF1-1
+Added Pin To Net: NetName=NetKF1_1 Pin=SW1-2
+Added Net: Name=NetKF1_1
+PCB-ECO: Change Pad Pin/Pkg Length: Old=20mil New=0mil
+PCB-ECO: Change Pad Pin/Pkg Length: Old=20mil New=0mil

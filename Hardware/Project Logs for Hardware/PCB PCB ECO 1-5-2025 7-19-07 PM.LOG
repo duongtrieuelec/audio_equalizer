@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=+3.3V Pin=VR3-1
+Removed Pin From Net: NetName=Lowpass Pin=VR3-2
+Removed Pin From Net: NetName=GND Pin=VR3-3
+Removed Member From Class: ClassName=main Member=VR3
+Added Component: Designator=BT?(Nut Nhan 4 Chan Cam 6x6)
+Add component (AddParameter): Name = "Ma_Hang"; Value = "MH004584"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ten"; Value = "Nút Nh?n 4 Chân 6x6x5MM DIP"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=Lowpass Pin=BT?-1
+Added Pin To Net: NetName=Lowpass Pin=BT?-1
+Added Pin To Net: NetName=GND Pin=BT?-2
+Added Pin To Net: NetName=GND Pin=BT?-2
+Added Member To Class: ClassName=main Member=Component BT? Nut Nhan 4 Chan Cam 6x6
+Added Member To Class: ClassName=main Member=Component KF3 CON 2 KF301

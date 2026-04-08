@@ -1,0 +1,79 @@
+Change Physical Footprint: Designator=A1 Old Footprint=ESP32-WROVER-I New Footprint=ESP32-WROVER-I
+Change Physical Footprint: Designator=AMS1 Old Footprint=SOT223 New Footprint=SOT223
+Change Physical Footprint: Designator=AMS2 Old Footprint=SOT223 New Footprint=SOT223
+Change Physical Footprint: Designator=BT1 Old Footprint=Nut Nhan 2 Chan SMD 3x6x2.5 New Footprint=Nut Nhan 2 Chan SMD 3x6x2.5
+Change Physical Footprint: Designator=BT2 Old Footprint=Nut Nhan 2 Chan SMD 3x6x2.5 New Footprint=Nut Nhan 2 Chan SMD 3x6x2.5
+Change Physical Footprint: Designator=C1 Old Footprint=tu 0805 New Footprint=tu 0805
+Change Physical Footprint: Designator=C2 Old Footprint=tu tantalum smd6032 New Footprint=tu tantalum smd6032
+Change Physical Footprint: Designator=C3 Old Footprint=tu tantalum smd3528 New Footprint=tu tantalum smd3528
+Change Physical Footprint: Designator=C4 Old Footprint=tu tantalum smd6032 New Footprint=tu tantalum smd6032
+Change Physical Footprint: Designator=C5 Old Footprint=tu 0805 New Footprint=tu 0805
+Change Physical Footprint: Designator=C6 Old Footprint=tu tantalum smd3528 New Footprint=tu tantalum smd3528
+Change Physical Footprint: Designator=C7 Old Footprint=tu tantalum smd3528 New Footprint=tu tantalum smd3528
+Change Physical Footprint: Designator=C8 Old Footprint=tu tantalum smd3528 New Footprint=tu tantalum smd3528
+Change Physical Footprint: Designator=C9 Old Footprint=tu 0805 New Footprint=tu 0805
+Change Physical Footprint: Designator=C10 Old Footprint=tu 0805 New Footprint=tu 0805
+Change Physical Footprint: Designator=C11 Old Footprint=tu tantalum smd3528 New Footprint=tu tantalum smd3528
+Change Physical Footprint: Designator=C12 Old Footprint=tu tantalum smd6032 New Footprint=tu tantalum smd6032
+Change Physical Footprint: Designator=C13 Old Footprint=tu tantalum smd6032 New Footprint=tu tantalum smd6032
+Change Physical Footprint: Designator=C14 Old Footprint=tu 0805 New Footprint=tu 0805
+Change Physical Footprint: Designator=C15 Old Footprint=tu tantalum smd3528 New Footprint=tu tantalum smd3528
+Change Physical Footprint: Designator=C16 Old Footprint=tu 0805 New Footprint=tu 0805
+Change Physical Footprint: Designator=C17 Old Footprint=tu 0805 New Footprint=tu 0805
+Change Physical Footprint: Designator=C18 Old Footprint=tu 0805 New Footprint=tu 0805
+Change Physical Footprint: Designator=C19 Old Footprint=tu 0805 New Footprint=tu 0805
+Change Physical Footprint: Designator=C20 Old Footprint=tu tantalum smd3528 New Footprint=tu tantalum smd3528
+Change Physical Footprint: Designator=C21 Old Footprint=tu 0805 New Footprint=tu 0805
+Change Physical Footprint: Designator=C22 Old Footprint=tu tantalum smd6032 New Footprint=tu tantalum smd6032
+Change Physical Footprint: Designator=C23 Old Footprint=tu tantalum smd6032 New Footprint=tu tantalum smd6032
+Change Physical Footprint: Designator=C24 Old Footprint=tu tantalum smd3216 New Footprint=tu tantalum smd3216
+Change Physical Footprint: Designator=C25 Old Footprint=tu tantalum smd3216 New Footprint=tu tantalum smd3216
+Change Physical Footprint: Designator=C26 Old Footprint=tu nhom 8 (f) New Footprint=tu nhom 8 (f)
+Change Physical Footprint: Designator=C27 Old Footprint=tu tantalum smd3216 New Footprint=tu tantalum smd3216
+Change Physical Footprint: Designator=C28 Old Footprint=tu 0805 New Footprint=tu 0805
+Change Physical Footprint: Designator=C29 Old Footprint=tu 0805 New Footprint=tu 0805
+Change Physical Footprint: Designator=C30 Old Footprint=tu 0805 New Footprint=tu 0805
+Change Physical Footprint: Designator=C31 Old Footprint=tu 0805 New Footprint=tu 0805
+Change Physical Footprint: Designator=C32 Old Footprint=tu 0805 New Footprint=tu 0805
+Change Physical Footprint: Designator=D1 Old Footprint=DIODE SMA New Footprint=DIODE SMA
+Change Physical Footprint: Designator=D2 Old Footprint=DIODE SMA New Footprint=DIODE SMA
+Change Physical Footprint: Designator=IC1 Old Footprint=SOP65P640X120-20N New Footprint=SOP65P640X120-20N
+Change Physical Footprint: Designator=IC2 Old Footprint=SOIC127P600X126-16N New Footprint=SOIC127P600X126-16N
+Change Physical Footprint: Designator=JP1 Old Footprint=JP 1x6 CC New Footprint=JP 1x6 CC
+Change Physical Footprint: Designator=JP2 Old Footprint=JP 1x4 CC New Footprint=JP 1x4 CC
+Change Physical Footprint: Designator=KF1 Old Footprint=Con 2 KF301 5.08 New Footprint=Con 2 KF301 5.08
+Change Physical Footprint: Designator=KF2 Old Footprint=Con 2 KF301 5.08 New Footprint=Con 2 KF301 5.08
+Change Physical Footprint: Designator=KF3 Old Footprint=Con 2 KF301 5.08 New Footprint=Con 2 KF301 5.08
+Change Physical Footprint: Designator=L1 Old Footprint=Cuon Cam 7x7x5 New Footprint=Cuon Cam 7x7x5
+Change Physical Footprint: Designator=L2 Old Footprint=LED-5MM-BLUE New Footprint=LED-5MM-BLUE
+Change Physical Footprint: Designator=L3 Old Footprint=LED-5MM-RED New Footprint=LED-5MM-RED
+Change Physical Footprint: Designator=L4 Old Footprint=LED-0805-Red New Footprint=LED-0805-Red
+Change Physical Footprint: Designator=Q1 Old Footprint=SOP65P640X120-8N New Footprint=SOP65P640X120-8N
+Change Physical Footprint: Designator=Q2 Old Footprint=SOT-23 New Footprint=SOT-23
+Change Physical Footprint: Designator=Q3 Old Footprint=SOT-23 New Footprint=SOT-23
+Change Physical Footprint: Designator=R1 Old Footprint=tro smd 0805 New Footprint=tro smd 0805
+Change Physical Footprint: Designator=R2 Old Footprint=tro smd 0805 New Footprint=tro smd 0805
+Change Physical Footprint: Designator=R3 Old Footprint=tro smd 0805 New Footprint=tro smd 0805
+Change Physical Footprint: Designator=R4 Old Footprint=tro smd 0805 New Footprint=tro smd 0805
+Change Physical Footprint: Designator=R5 Old Footprint=tro smd 0805 New Footprint=tro smd 0805
+Change Physical Footprint: Designator=R6 Old Footprint=tro smd 0805 New Footprint=tro smd 0805
+Change Physical Footprint: Designator=R7 Old Footprint=tro smd 0805 New Footprint=tro smd 0805
+Change Physical Footprint: Designator=R8 Old Footprint=tro smd 0805 New Footprint=tro smd 0805
+Change Physical Footprint: Designator=R9 Old Footprint=tro smd 0805 New Footprint=tro smd 0805
+Change Physical Footprint: Designator=R10 Old Footprint=Tro SMD 0805 New Footprint=Tro SMD 0805
+Change Physical Footprint: Designator=R11 Old Footprint=Tro SMD 0805 New Footprint=Tro SMD 0805
+Change Physical Footprint: Designator=R12 Old Footprint=tro smd 0805 New Footprint=tro smd 0805
+Change Physical Footprint: Designator=R13 Old Footprint=RES 0805 New Footprint=RES 0805
+Change Physical Footprint: Designator=R14 Old Footprint=RES 0805 New Footprint=RES 0805
+Change Physical Footprint: Designator=R15 Old Footprint=tro smd 0805 New Footprint=tro smd 0805
+Change Physical Footprint: Designator=SW1 Old Footprint=SW_2ARS_TH New Footprint=SW_2ARS_TH
+Change Physical Footprint: Designator=U1 Old Footprint=SOP127P600X175-9N New Footprint=SOP127P600X175-9N
+Change Physical Footprint: Designator=U2 Old Footprint=SOT95P280X145-6N New Footprint=SOT95P280X145-6N
+Change Physical Footprint: Designator=U3 Old Footprint=SOT23-5 New Footprint=SOT23-5
+Change Physical Footprint: Designator=U4 Old Footprint=SOIC16_50_284_25X90_SMT New Footprint=SOIC16_50_284_25X90_SMT
+Change Physical Footprint: Designator=USB1 Old Footprint=USB Micro 5p SMD New Footprint=USB Micro 5p SMD
+Change Physical Footprint: Designator=VR1 Old Footprint=Bien Tro Tam Giac Dung New Footprint=Bien Tro Tam Giac Dung
+Change Physical Footprint: Designator=VR2 Old Footprint=Bien Tro Volume Don New Footprint=Bien Tro Volume Don
+Change Physical Footprint: Designator=VR3 Old Footprint=Bien Tro Volume Don New Footprint=Bien Tro Volume Don
+Change Physical Footprint: Designator=VR4 Old Footprint=Bien Tro Volume Don New Footprint=Bien Tro Volume Don
+Change Physical Footprint: Designator=VR5 Old Footprint=Bien Tro Volume Don New Footprint=Bien Tro Volume Don

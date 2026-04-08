@@ -1,0 +1,5 @@
+Change Component Designator: OldDesignator=BT? NewDesignator=BT2
+Change Component Designator: OldDesignator=BT? NewDesignator=BT3
+Added Member To Class: ClassName=main Member=Component BT1 Nut Nhan 2 Chan SMD 3x6x2.5
+Added Member To Class: ClassName=main Member=Component BT2 Nut Nhan 4 Chan Cam 6x6
+Added Member To Class: ClassName=main Member=Component BT3 Nut Nhan 4 Chan Cam 6x6

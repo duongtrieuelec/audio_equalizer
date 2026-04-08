@@ -1,0 +1,14 @@
+Removed Pin From Net: NetName=+5V Pin=C27-1
+Removed Pin From Net: NetName=GND Pin=C27-2
+Change Component DesignItemId : Designator=C27 Old DesignItemId=Tu tantalum 1uF 25V SMD3216 New DesignItemId=Tu 0805 105 50V 10%
+Change Component Footprint: Designator=C27 Old Footprint=tu tantalum smd3216 New Footprint=tu 0805
+Change Component Comment : Designator=C27 Old Comment=1uF New Comment=105
+Change component parameters: Designator = "C27" ("C27"); Footprint = "tu tantalum smd3216"; UniqueID = "\HOBTESQC" ("\HOBTESQC")
+Change component parameters (AddParameter): Name = "Chung_Loai"; Value = "Dán"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Don_Vi"; Value = "Con"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Kieu_Chan"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Ma_Hang"; Value = "MH004552"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "So_Chan"; Value = "2"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Ten_Linh_Kien"; Value = "T? 0805 105-1uF 10% 50V"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=C27-1
+Added Pin To Net: NetName=+5V Pin=C27-2

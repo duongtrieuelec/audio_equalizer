@@ -1,0 +1,6 @@
+Removed Member From Class: ClassName=main Member=BT4
+Removed Member From Class: ClassName=main Member=BT5
+Change Component Designator: OldDesignator=BT4 NewDesignator=BT2
+Change Component Designator: OldDesignator=BT5 NewDesignator=BT3
+Added Member To Class: ClassName=main Member=Component BT2 Nut Nhan 2 Chan SMD 3x6x2.5
+Added Member To Class: ClassName=main Member=Component BT3 Nut Nhan 2 Chan SMD 3x6x2.5

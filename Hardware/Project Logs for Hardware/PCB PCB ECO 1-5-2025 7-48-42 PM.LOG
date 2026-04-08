@@ -1,0 +1,10 @@
+Added Pin To Net: NetName=+5V Pin=C5-1
+Added Pin To Net: NetName=+5V Pin=C6-1
+Added Pin To Net: NetName=+5V Pin=D2-2
+Added Pin To Net: NetName=+5V Pin=L2-1
+Added Pin To Net: NetName=+5V Pin=L3-1
+Added Pin To Net: NetName=+5V Pin=U1-4
+Added Pin To Net: NetName=+5V Pin=U1-8
+Change Net Name : Old Net Name=+5V New Net Name=IN+
+Added Member To Class: ClassName=main Member=Component BT1 Nut Nhan 2 Chan SMD 3x6x2.5
+Added Member To Class: ClassName=main Member=Component BT2 Nut Nhan 2 Chan SMD 3x6x2.5

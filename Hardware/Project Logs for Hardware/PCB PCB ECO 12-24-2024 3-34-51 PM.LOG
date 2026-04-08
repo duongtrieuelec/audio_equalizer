@@ -1,0 +1,31 @@
+Removed Pin From Net: NetName=GND Pin=C?-1
+Removed Pin From Net: NetName=NetQ?_1 Pin=Q?-1
+Removed Pin From Net: NetName=NetQ?_1 Pin=R?-1
+Removed Pin From Net: NetName=GND Pin=U?-1
+Added Pin To Net: NetName=IN+ Pin=C?-1
+Added Pin To Net: NetName=GND Pin=C?-2
+Added Pin To Net: NetName=IN+ Pin=D?-2
+Added Pin To Net: NetName=NetQ?_1 Pin=Q?-1
+Added Pin To Net: NetName=GND Pin=R?-1
+Added Pin To Net: NetName=NetQ?_1 Pin=R?-2
+Added Pin To Net: NetName=NetR?_2 Pin=U?-1
+Added Pin To Net: NetName=NetR?_2 Pin=U?-2
+Added Pin To Net: NetName=NetD?_1 Pin=USB?-1
+Add Net: Net with name "NetL?_2" already exists
+Add Net: Net with name "NetQ?_1" already exists
+Add Net: Net with name "NetQ?_1" already exists
+Add Net: Net with name "NetR?_1" already exists
+Add Net: Net with name "NetR?_1" already exists
+Add Net: Net with name "NetR?_1" already exists
+Added Member To Class: ClassName=main Member=Component C? 10uF
+Added Member To Class: ClassName=main Member=Component C? 104
+Added Member To Class: ClassName=main Member=Component L? LED
+Added Member To Class: ClassName=main Member=Component Q? BC817
+Added Member To Class: ClassName=main Member=Component Q? BC817
+Added Member To Class: ClassName=main Member=Component R? ?
+Added Member To Class: ClassName=main Member=Component R? 1k
+Added Member To Class: ClassName=main Member=Component R? 1k
+Added Member To Class: ClassName=main Member=Component R? ?
+Added Member To Class: ClassName=main Member=Component U? TP4056
+Added Member To Class: ClassName=main Member=Component U? ESP32-C3_SUPERMINI
+Added Member To Class: ClassName=main Member=Component U? CH340C
