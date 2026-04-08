@@ -1,0 +1,107 @@
+<svg viewBox="0 0 1000 720" xmlns="http://www.w3.org/2000/svg">
+  <!-- Power Management at top -->
+  <rect x="410" y="20" width="180" height="120" fill="#e6f3ff" stroke="#0066cc" rx="5"/>
+  <text x="500" y="50" text-anchor="middle" font-size="14" font-weight="bold">Quản lý nguồn</text>
+  <text x="500" y="70" text-anchor="middle" font-size="12">- Sạc pin</text>
+  <text x="500" y="90" text-anchor="middle" font-size="12">- Mạch bảo vệ</text>
+  <text x="500" y="110" text-anchor="middle" font-size="12">- Tăng áp (3.7V lên 5V)</text>
+  <text x="500" y="130" text-anchor="middle" font-size="12">- Ổn áp LDO</text>
+
+  <!-- ESP32 Block -->
+  <rect x="300" y="180" width="400" height="400" fill="#e6f3ff" stroke="#0066cc" rx="5"/>
+  <text x="500" y="210" text-anchor="middle" font-size="16" font-weight="bold">ESP32</text>
+
+  <!-- Left Side -->
+  <rect x="50" y="180" width="180" height="120" fill="#e6f3ff" stroke="#0066cc" rx="5"/>
+  <text x="140" y="210" text-anchor="middle" font-size="14" font-weight="bold">Giao diện người dùng</text>
+  <text x="140" y="230" text-anchor="middle" font-size="12">- Điều chỉnh âm lượng</text>
+  <text x="140" y="250" text-anchor="middle" font-size="12">- Màn hình hiển thị</text>
+  <text x="140" y="270" text-anchor="middle" font-size="12">- Nút điều khiển</text>
+  <text x="140" y="290" text-anchor="middle" font-size="12">- Điều chỉnh băng tần EQ</text>
+
+  <!-- Right Side -->
+  <rect x="770" y="180" width="180" height="120" fill="#e6f3ff" stroke="#0066cc" rx="5"/>
+  <text x="860" y="210" text-anchor="middle" font-size="14" font-weight="bold">Đầu ra âm thanh</text>
+  <text x="860" y="230" text-anchor="middle" font-size="12">- Bộ DAC (PCM5102A)</text>
+  <text x="860" y="250" text-anchor="middle" font-size="12">- Khuếch đại công suất</text>
+  <text x="860" y="270" text-anchor="middle" font-size="12">- Hệ thống loa</text>
+  <text x="860" y="290" text-anchor="middle" font-size="12">- Cổng âm thanh</text>
+
+  <rect x="770" y="460" width="180" height="120" fill="#e6f3ff" stroke="#0066cc" rx="5"/>
+  <text x="860" y="490" text-anchor="middle" font-size="14" font-weight="bold">Bluetooth A2DP</text>
+  <text x="860" y="510" text-anchor="middle" font-size="12">- Truyền âm thanh</text>
+  <text x="860" y="530" text-anchor="middle" font-size="12">- Quản lý kết nối</text>
+  <text x="860" y="550" text-anchor="middle" font-size="12">- Hỗ trợ codec</text>
+
+  <!-- ESP32 Internal Blocks -->
+  <rect x="320" y="230" width="170" height="200" fill="#fff" stroke="#0066cc" rx="5"/>
+  <text x="405" y="250" text-anchor="middle" font-size="14" font-weight="bold">Core 0 (PRO CPU)</text>
+  <text x="405" y="270" text-anchor="middle" font-size="12">- Xử lý âm thanh &amp; bộ lọc</text>
+  <text x="405" y="290" text-anchor="middle" font-size="12">- Bluetooth A2DP</text>
+  <text x="405" y="310" text-anchor="middle" font-size="12">- Xuất I2S</text>
+  <text x="405" y="330" text-anchor="middle" font-size="12">- Bộ đệm âm thanh</text>
+  <text x="405" y="350" text-anchor="middle" font-size="12">- AVRC: Nhận thông tin bài hát</text>
+  <text x="405" y="370" text-anchor="middle" font-size="12">- AVRC: Điều khiển phát nhạc</text>
+
+  <rect x="510" y="230" width="170" height="200" fill="#fff" stroke="#0066cc" rx="5"/>
+  <text x="595" y="250" text-anchor="middle" font-size="14" font-weight="bold">Core 1 (APP CPU)</text>
+  <text x="595" y="270" text-anchor="middle" font-size="12">- Hiển thị OLED</text>
+  <text x="595" y="290" text-anchor="middle" font-size="12">- Xử lý nút nhấn</text>
+  <text x="595" y="310" text-anchor="middle" font-size="12">- Phân tích FFT</text>
+  <text x="595" y="330" text-anchor="middle" font-size="12">- Điều khiển bộ lọc</text>
+  <text x="595" y="350" text-anchor="middle" font-size="12">- Đọc GPIO &amp; ADC</text>
+  <text x="595" y="370" text-anchor="middle" font-size="12">- Quản lý nguồn</text>
+  <text x="595" y="390" text-anchor="middle" font-size="12">- Debug UART</text>
+  <text x="595" y="410" text-anchor="middle" font-size="12">- Điều khiển âm lượng</text>
+
+  <!-- Quản lý dữ liệu -->
+  <rect x="320" y="450" width="360" height="100" fill="#fff" stroke="#0066cc" rx="5"/>
+  <text x="500" y="470" text-anchor="middle" font-size="14" font-weight="bold">Quản lý dữ liệu</text>
+  <text x="500" y="490" text-anchor="middle" font-size="12">- Bộ đệm DMA</text>
+  <text x="500" y="510" text-anchor="middle" font-size="12">- Hàng đợi &amp; Vòng đệm</text>
+  <text x="500" y="530" text-anchor="middle" font-size="12">- Đồng bộ Mutex</text>
+
+  <!-- Debug UART - Góc dưới bên trái -->
+  <rect x="50" y="460" width="180" height="120" fill="#e6f3ff" stroke="#0066cc" rx="5"/>
+  <text x="140" y="490" text-anchor="middle" font-size="14" font-weight="bold">Debug UART</text>
+  <text x="140" y="510" text-anchor="middle" font-size="12">- Cổng nạp chương trình</text>
+  <text x="140" y="530" text-anchor="middle" font-size="12">- Debug Monitor</text>
+  <text x="140" y="550" text-anchor="middle" font-size="12">- Serial Commands</text>
+
+  <!-- Arrows -->
+  <!-- Mũi tên từ nguồn đến giao diện người dùng -->
+  <path d="M410 80 L140 80 L140 180" stroke="#cc0000" fill="none" stroke-width="2" 
+        stroke-dasharray="5,3" marker-end="url(#arrowhead-power)"/>
+  
+  <!-- Mũi tên từ nguồn đến chuỗi âm thanh -->
+  <path d="M590 80 L860 80 L860 180" stroke="#cc0000" fill="none" stroke-width="2"
+        stroke-dasharray="5,3" marker-end="url(#arrowhead-power)"/>
+  
+  <path d="M500 140 L500 180" stroke="#cc0000" fill="none" stroke-width="2"
+        stroke-dasharray="5,3" marker-end="url(#arrowhead-power)"/>
+  <path d="M230 240 L300 240" stroke="#0066cc" fill="none" stroke-width="2"
+        marker-end="url(#arrowhead)"
+        marker-start="url(#arrowhead-start)"/>
+  <path d="M700 240 L770 240" stroke="#0066cc" fill="none" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M700 520 L770 520" stroke="#0066cc" fill="none" stroke-width="2" 
+        marker-end="url(#arrowhead)"
+        marker-start="url(#arrowhead-start)"/>
+  <path d="M300 520 L230 520" stroke="#0066cc" fill="none" stroke-width="2"
+        marker-end="url(#arrowhead)"
+        marker-start="url(#arrowhead-start)"/>
+
+  <defs>
+    <!-- Marker cho mũi tên kết thúc (chỉ ra ngoài) -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0066cc"/>
+    </marker>
+    <!-- Marker cho mũi tên bắt đầu (chỉ vào trong) -->
+    <marker id="arrowhead-start" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="10 0, 0 3.5, 10 7" fill="#0066cc"/>
+    </marker>
+    <!-- Marker cho mũi tên nguồn -->
+    <marker id="arrowhead-power" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#cc0000"/>
+    </marker>
+  </defs>
+</svg>

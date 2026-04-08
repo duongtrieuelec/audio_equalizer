@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="800" height="300" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-size="20" font-weight="bold">Cấu trúc nối tiếp của bộ lọc Biquad</text>
+
+    <!-- Định nghĩa mũi tên -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="black"/>
+        </marker>
+    </defs>
+
+    <!-- Input -->
+    <text x="50" y="170" text-anchor="middle" font-size="14">Tín hiệu vào</text>
+    <text x="50" y="190" text-anchor="middle" font-size="14">x[n]</text>
+
+    <!-- Bass Filter -->
+    <rect x="100" y="120" width="160" height="60" fill="#e6f3ff" stroke="#0066cc" rx="5"/>
+    <text x="180" y="145" text-anchor="middle" font-size="14" font-weight="bold">Low Shelving Filter</text>
+    <text x="180" y="165" text-anchor="middle" font-size="12">250Hz</text>
+
+    <!-- Mid Filter -->
+    <rect x="320" y="120" width="160" height="60" fill="#fff3e6" stroke="#cc6600" rx="5"/>
+    <text x="400" y="145" text-anchor="middle" font-size="14" font-weight="bold">Mid Peaking Filter</text>
+    <text x="400" y="165" text-anchor="middle" font-size="12">1.5kHz</text>
+
+    <!-- Treble Filter -->
+    <rect x="540" y="120" width="160" height="60" fill="#f3ffe6" stroke="#339900" rx="5"/>
+    <text x="620" y="145" text-anchor="middle" font-size="14" font-weight="bold">High Shelving Filter</text>
+    <text x="620" y="165" text-anchor="middle" font-size="12">4.5kHz</text>
+
+    <!-- Output -->
+    <text x="750" y="170" text-anchor="middle" font-size="14">Tín hiệu ra</text>
+    <text x="750" y="190" text-anchor="middle" font-size="14">y[n]</text>
+
+    <!-- Connections with arrows -->
+    <path d="M70 150 L100 150" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M260 150 L320 150" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M480 150 L540 150" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M700 150 L730 150" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+    <!-- Equations -->
+    <text x="400" y="240" text-anchor="middle" font-size="16" font-style="italic">
+        y[n] = H₃(H₂(H₁(x[n])))
+    </text>
+    <text x="400" y="270" text-anchor="middle" font-size="14">
+        Trong đó H₁, H₂, H₃ là hàm truyền đạt của các bộ lọc dải thấp, trung và cao
+    </text>
+</svg>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 800 800" width="900" height="800" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="800" height="800" fill="#ffffff"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-size="20" font-weight="bold">ESP32 Dual-Core Audio System Data Flow</text>
+
+    <!-- Core 0 Box -->
+    <rect x="50" y="80" width="700" height="240" fill="#e6f3ff" stroke="#0066cc" rx="5"/>
+    <text x="400" y="100" text-anchor="middle" font-size="16" font-weight="bold">Core 0 - Communication Core</text>
+    
+    <!-- Core 0 Components -->
+    <rect x="70" y="120" width="300" height="180" fill="#fff" stroke="#0066cc" rx="5"/>
+    <text x="220" y="140" text-anchor="middle" font-size="14" font-weight="bold">Input Handlers</text>
+    <text x="220" y="160" text-anchor="middle" font-size="12">Bluetooth A2DP (70% CPU) | WiFi AP (30% CPU)</text>
+    <text x="220" y="180" text-anchor="middle" font-size="12">Web API: /api/volume, /api/eq</text>
+    <text x="220" y="200" text-anchor="middle" font-size="12">ADC: GPIO 32,33,34,35 (Volume/EQ)</text>
+    <text x="220" y="220" text-anchor="middle" font-size="12">Serial Debug: 115200 baud</text>
+    <text x="220" y="240" text-anchor="middle" font-size="12">RF Coexistence: Time-sharing</text>
+    <text x="220" y="260" text-anchor="middle" font-size="12">Stack: BT(8KB), WiFi(8KB)</text>
+    
+    <!-- Shared Resources -->
+    <rect x="430" y="120" width="300" height="180" fill="#fff" stroke="#0066cc" rx="5"/>
+    <text x="580" y="140" text-anchor="middle" font-size="14" font-weight="bold">Shared Resources</text>
+    <text x="580" y="160" text-anchor="middle" font-size="12">Audio Queue: xQueueCreate(2, 2560B)</text>
+    <text x="580" y="180" text-anchor="middle" font-size="12">Settings Mutex: xSemaphoreCreateMutex()</text>
+    <text x="580" y="200" text-anchor="middle" font-size="12">Volume: 0-21 (-79dB to 0dB)</text>
+    <text x="580" y="220" text-anchor="middle" font-size="12">EQ: Low(-40dB to +6dB@250Hz)</text>
+    <text x="580" y="240" text-anchor="middle" font-size="12">Mid(-40dB to +6dB@1.5kHz)</text>
+    <text x="580" y="260" text-anchor="middle" font-size="12">High(-40dB to +6dB@4.5kHz)</text>
+    <text x="580" y="280" text-anchor="middle" font-size="12">Mutex Timeout: portMAX_DELAY</text>
+
+    <!-- Core 1 Box -->
+    <rect x="50" y="360" width="700" height="240" fill="#fff3e6" stroke="#cc6600" rx="5"/>
+    <text x="400" y="380" text-anchor="middle" font-size="16" font-weight="bold">Core 1 - Real-time Audio Core</text>
+    
+    <!-- I2S Driver - Left -->
+    <rect x="70" y="400" width="300" height="180" fill="#fff" stroke="#cc6600" rx="5"/>
+    <text x="220" y="420" text-anchor="middle" font-size="14" font-weight="bold">I2S Driver</text>
+    <text x="220" y="440" text-anchor="middle" font-size="12">DMA: 16 x 512B buffers</text>
+    <text x="220" y="460" text-anchor="middle" font-size="12">44.1kHz/16-bit stereo</text>
+    <text x="220" y="480" text-anchor="middle" font-size="12">BCLK: 2.8224MHz</text>
+    <text x="220" y="500" text-anchor="middle" font-size="12">LRCK: 44.1kHz</text>
+    
+    <!-- Audio Processing - Right -->
+    <rect x="430" y="400" width="300" height="180" fill="#fff" stroke="#cc6600" rx="5"/>
+    <text x="580" y="420" text-anchor="middle" font-size="14" font-weight="bold">Audio Processing</text>
+    <text x="580" y="440" text-anchor="middle" font-size="12">Queue Management: 29ms blocks</text>
+    <text x="580" y="460" text-anchor="middle" font-size="12">3-Band IIR: Biquad filters</text>
+    <text x="580" y="480" text-anchor="middle" font-size="12">Volume: Exponential scaling</text>
+    <text x="580" y="500" text-anchor="middle" font-size="12">Underrun: Zero-fill protection</text>
+    <text x="580" y="520" text-anchor="middle" font-size="12">Priority: 2 | Stack: 16KB</text>
+
+    <!-- Audio Output Chain - Bottom -->
+    <rect x="50" y="640" width="700" height="120" fill="#f3ffe6" stroke="#339900" rx="5"/>
+    <text x="400" y="660" text-anchor="middle" font-size="16" font-weight="bold">Audio Output Chain</text>
+    <text x="400" y="690" text-anchor="middle" font-size="12">PCM5102A DAC (SNR: 112dB, THD: -93dB)</text>
+    <text x="400" y="710" text-anchor="middle" font-size="12">PAM8403 Amp (3W+3W@4Ω, THD: 0.1%)</text>
+    <text x="400" y="730" text-anchor="middle" font-size="12">4Ω Speakers/32Ω Phones</text>
+
+    <!-- Data Flow Arrows -->
+    <!-- Input to Shared Resources -->
+    <path d="M370 190 L430 190" stroke="#0066cc" fill="none" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="400" y="175" text-anchor="middle" font-size="10">Control</text>
+    <text x="400" y="185" text-anchor="middle" font-size="10">Raw Audio</text>
+
+    <!-- Shared Resources to Audio Processing -->
+    <path d="M580 300 L580 400" stroke="#666666" fill="none" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="600" y="340" text-anchor="start" font-size="10">Audio Data</text>
+    <text x="600" y="355" text-anchor="start" font-size="10">Settings</text>
+
+    <!-- Audio Processing to I2S -->
+    <path d="M430 480 L370 480" stroke="#cc6600" fill="none" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="400" y="465" text-anchor="middle" font-size="10">Processed</text>
+    <text x="400" y="475" text-anchor="middle" font-size="10">Audio</text>
+
+    <!-- I2S to Output -->
+    <path d="M220 580 L220 640" stroke="#339900" fill="none" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="240" y="605" text-anchor="start" font-size="10">I2S</text>
+    <text x="240" y="615" text-anchor="start" font-size="10">Data</text>
+
+    <!-- Arrow Definitions -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+        </marker>
+    </defs>
+</svg>

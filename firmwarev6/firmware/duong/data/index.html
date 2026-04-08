@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ESP32 Audio Controller</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Thông tin bài hát -->
+      <div class="now-playing">
+        <div class="track-info">
+          <div id="songTitle">Demo Track</div>
+          <div id="artistName">Demo Artist</div>
+        </div>
+      </div>
+
+      <!-- Thanh progress -->
+      <div class="progress-container">
+        <span class="time current">0:00</span>
+        <div class="progress-bar">
+          <div class="progress"></div>
+          <input
+            type="range"
+            class="progress-slider"
+            min="0"
+            max="100"
+            value="0"
+          />
+        </div>
+        <span class="time total">3:45</span>
+      </div>
+
+      <!-- Điều khiển chính -->
+      <div class="main-controls">
+        <button id="shuffleBtn" class="control-btn small" title="Shuffle">
+          <i class="fas fa-random"></i>
+        </button>
+        <button id="prevBtn" class="control-btn" title="Previous">
+          <i class="fas fa-step-backward"></i>
+        </button>
+        <button
+          id="playPauseBtn"
+          class="control-btn main-control"
+          title="Play/Pause"
+        >
+          <i class="fas fa-play"></i>
+        </button>
+        <button id="nextBtn" class="control-btn" title="Next">
+          <i class="fas fa-step-forward"></i>
+        </button>
+        <button id="repeatBtn" class="control-btn small" title="Repeat">
+          <i class="fas fa-redo"></i>
+        </button>
+      </div>
+
+      <!-- Volume và các điều khiển phụ -->
+      <div class="secondary-controls">
+        <div class="volume-control">
+          <i class="fas fa-volume-down"></i>
+          <input
+            type="range"
+            min="0"
+            max="21"
+            value="12"
+            class="slider"
+            id="volumeSlider"
+          />
+          <i class="fas fa-volume-up"></i>
+        </div>
+        <button
+          id="sleepTimerBtn"
+          class="control-btn small"
+          title="Sleep Timer"
+        >
+          <i class="fas fa-clock"></i>
+        </button>
+        <button class="control-btn small wifi-btn" title="WiFi Settings">
+          <i class="fas fa-wifi"></i>
+        </button>
+      </div>
+
+      <!-- Equalizer -->
+      <div class="eq-section" id="eqSection">
+        <div class="eq-header">
+          <h3>Equalizer</h3>
+          <div class="preset-buttons">
+            <button class="preset-btn" data-preset="custom">Custom</button>
+            <button class="preset-btn" data-preset="rock">Rock</button>
+            <button class="preset-btn" data-preset="pop">Pop</button>
+            <button class="preset-btn" data-preset="jazz">Jazz</button>
+          </div>
+        </div>
+        <div class="eq-controls">
+          <div class="eq-slider-container">
+            <div class="eq-value-wrapper">
+              <span class="eq-value" id="lowVal">0 dB</span>
+            </div>
+            <div class="eq-slider-wrapper">
+              <div class="eq-slider-progress"></div>
+              <input
+                type="range"
+                min="-40"
+                max="12"
+                value="0"
+                class="slider vertical"
+                id="lowEQ"
+              />
+            </div>
+            <label>Bass</label>
+          </div>
+
+          <div class="eq-slider-container">
+            <div class="eq-value-wrapper">
+              <span class="eq-value" id="midVal">0 dB</span>
+            </div>
+            <div class="eq-slider-wrapper">
+              <div class="eq-slider-progress"></div>
+              <input
+                type="range"
+                min="-40"
+                max="12"
+                value="0"
+                class="slider vertical"
+                id="midEQ"
+              />
+            </div>
+            <label>Mid</label>
+          </div>
+
+          <div class="eq-slider-container">
+            <div class="eq-value-wrapper">
+              <span class="eq-value" id="highVal">0 dB</span>
+            </div>
+            <div class="eq-slider-wrapper">
+              <div class="eq-slider-progress"></div>
+              <input
+                type="range"
+                min="-40"
+                max="12"
+                value="0"
+                class="slider vertical"
+                id="highEQ"
+              />
+            </div>
+            <label>Treble</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thêm modal hẹn giờ ngủ -->
+    <div id="sleepTimerModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Sleep Timer</h3>
+          <button class="close-btn">&times;</button>
+        </div>
+        <div class="timer-options">
+          <button class="timer-btn" data-minutes="15">15 phút</button>
+          <button class="timer-btn" data-minutes="30">30 phút</button>
+          <button class="timer-btn" data-minutes="45">45 phút</button>
+          <button class="timer-btn" data-minutes="60">60 phút</button>
+          <button class="timer-btn" data-minutes="90">90 phút</button>
+          <button class="timer-btn custom">Tùy chỉnh</button>
+        </div>
+        <div class="custom-timer" style="display: none">
+          <input
+            type="number"
+            id="customMinutes"
+            min="1"
+            max="180"
+            placeholder="Nhập số phút"
+          />
+          <button class="timer-btn set-custom">Đặt giờ</button>
+        </div>
+        <div id="timerDisplay" class="timer-display" style="display: none">
+          <div>Còn lại: <span id="timeRemaining">0:00</span></div>
+          <button class="timer-btn cancel">Hủy hẹn giờ</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thêm modal WiFi -->
+    <div id="wifiModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>WiFi Networks</h3>
+          <button class="close-btn">&times;</button>
+        </div>
+        <div class="wifi-list">
+          <!-- WiFi networks will be populated here -->
+        </div>
+        <div class="wifi-connect-form" style="display: none">
+          <input type="text" id="selectedNetwork" readonly />
+          <input
+            type="password"
+            id="wifiPassword"
+            placeholder="Nhập mật khẩu"
+          />
+          <button class="wifi-btn connect">Kết nối</button>
+        </div>
+        <button class="wifi-btn scan" onclick="scanWiFi()">Quét lại</button>
+      </div>
+    </div>
+
+    <script>
+      let isPlaying = false;
+
+      // Khởi tạo các nút điều khiển
+      document.addEventListener("DOMContentLoaded", function () {
+        // Play/Pause button
+        const playPauseBtn = document.getElementById("playPauseBtn");
+        playPauseBtn.addEventListener("click", function () {
+          isPlaying = !isPlaying;
+          const icon = this.querySelector("i");
+          icon.className = isPlaying ? "fas fa-pause" : "fas fa-play";
+          fetch("/playback?action=" + (isPlaying ? "play" : "pause"))
+            .then((response) => console.log("Playback toggled"))
+            .catch((error) => console.error("Error:", error));
+        });
+
+        // Previous track
+        document
+          .getElementById("prevBtn")
+          .addEventListener("click", function () {
+            fetch("/playback?action=prev")
+              .then((response) => console.log("Previous track"))
+              .catch((error) => console.error("Error:", error));
+          });
+
+        // Next track
+        document
+          .getElementById("nextBtn")
+          .addEventListener("click", function () {
+            fetch("/playback?action=next")
+              .then((response) => console.log("Next track"))
+              .catch((error) => console.error("Error:", error));
+          });
+
+        // Shuffle button
+        document
+          .getElementById("shuffleBtn")
+          .addEventListener("click", function () {
+            this.classList.toggle("active");
+            fetch("/playback?action=shuffle")
+              .then((response) => console.log("Shuffle toggled"))
+              .catch((error) => console.error("Error:", error));
+          });
+
+        // Repeat button
+        document
+          .getElementById("repeatBtn")
+          .addEventListener("click", function () {
+            this.classList.toggle("active");
+            fetch("/playback?action=repeat")
+              .then((response) => console.log("Repeat toggled"))
+              .catch((error) => console.error("Error:", error));
+          });
+
+        // Volume control
+        const volumeSlider = document.getElementById("volumeSlider");
+        volumeSlider.addEventListener("input", function () {
+          fetch("/setVolume?value=" + this.value)
+            .then((response) => console.log("Volume updated"))
+            .catch((error) => console.error("Error:", error));
+        });
+
+        // EQ controls
+        const eqSliders = document.querySelectorAll(
+          ".eq-slider-container input"
+        );
+        eqSliders.forEach((slider) => {
+          slider.addEventListener("input", updateAllEQ);
+        });
+
+        // WiFi handling
+        const wifiBtn = document.querySelector(".wifi-btn");
+        const wifiModal = document.getElementById("wifiModal");
+        const wifiList = document.querySelector(".wifi-list");
+        const wifiConnectForm = document.querySelector(".wifi-connect-form");
+
+        wifiBtn.addEventListener("click", function () {
+          wifiModal.style.display = "flex";
+          scanWiFi();
+        });
+      });
+
+      // Thêm vào phần script
+      const eqPresets = {
+        rock: { low: 8, mid: -4, high: 8 },
+        pop: { low: 5, mid: 5, high: 5 },
+        jazz: { low: -2, mid: 5, high: 5 },
+      };
+
+      document.querySelectorAll(".preset-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const preset = this.dataset.preset;
+          document
+            .querySelectorAll(".preset-btn")
+            .forEach((b) => b.classList.remove("active"));
+          this.classList.add("active");
+
+          if (preset !== "custom") {
+            const values = eqPresets[preset];
+            document.getElementById("lowEQ").value = values.low;
+            document.getElementById("midEQ").value = values.mid;
+            document.getElementById("highEQ").value = values.high;
+            updateAllEQ();
+          }
+        });
+      });
+
+      // Cập nhật hiển thị và vị trí của tất cả thanh EQ
+      function updateAllEQ() {
+        ["low", "mid", "high"].forEach((band) => {
+          const slider = document.getElementById(`${band}EQ`);
+          const valueDisplay = document.getElementById(`${band}Val`);
+          const container = slider.closest(".eq-slider-container");
+          const progress = container.querySelector(".eq-slider-progress");
+
+          const value = parseInt(slider.value);
+          const range = slider.max - slider.min;
+          const percentage = ((value - slider.min) / range) * 100;
+          progress.style.height = `${percentage}%`;
+
+          // Điều chỉnh vị trí hiển thị dB
+          const text = `${value} dB`;
+          valueDisplay.textContent = text;
+          valueDisplay.style.transform =
+            Math.abs(value) >= 10 ? "translateX(-5px)" : "translateX(0)";
+        });
+
+        // Gửi giá trị EQ đến ESP32
+        const low = document.getElementById("lowEQ").value;
+        const mid = document.getElementById("midEQ").value;
+        const high = document.getElementById("highEQ").value;
+
+        fetch(`/setEQ?low=${low}&mid=${mid}&high=${high}`)
+          .then((response) => console.log("EQ updated"))
+          .catch((error) => console.error("Error:", error));
+      }
+
+      // Thêm event listener cho từng thanh EQ
+      document
+        .querySelectorAll(".eq-slider-container input")
+        .forEach((slider) => {
+          slider.addEventListener("input", function () {
+            document
+              .querySelector('[data-preset="custom"]')
+              .classList.add("active");
+            document
+              .querySelectorAll('.preset-btn:not([data-preset="custom"])')
+              .forEach((btn) => {
+                btn.classList.remove("active");
+              });
+            updateAllEQ();
+          });
+        });
+
+      // Cập nhật metadata (tạm thời dùng dữ liệu mẫu)
+      function updateMetadata() {
+        // Tạm thời không gọi API, chỉ hiển thị thông tin mẫu
+        const mockData = {
+          title: "Demo Track",
+          artist: "Demo Artist",
+          album: "Demo Album",
+        };
+
+        document.getElementById("songTitle").textContent = mockData.title;
+        document.getElementById("artistName").textContent = mockData.artist;
+        <!-- document.getElementById("albumName").textContent = mockData.album; -->
+      }
+
+      // Event listeners
+      document.querySelectorAll(".slider").forEach((slider) => {
+        slider.addEventListener("input", function () {
+          if (this.id === "volumeSlider") {
+            updateVolume();
+          } else {
+            updateAllEQ();
+          }
+        });
+      });
+
+      /*document
+        .getElementById("playPauseBtn")
+        .addEventListener("click", togglePlayPause);
+      document.getElementById("nextBtn").addEventListener("click", nextTrack);
+      document.getElementById("prevBtn").addEventListener("click", prevTrack); */
+
+      // Chỉ gọi updateMetadata một lần để hiển thị dữ liệu mẫu
+      updateMetadata();
+      // Tạm thời comment out interval vì chưa có API
+      // setInterval(updateMetadata, 5000);
+
+      // Xử lý progress bar
+      const progressSlider = document.querySelector(".progress-slider");
+      const progress = document.querySelector(".progress");
+      const currentTimeDisplay = document.querySelector(".time.current");
+
+      progressSlider.addEventListener("input", function () {
+        const value = this.value;
+        progress.style.width = value + "%";
+
+        // Cập nhật hiển thị thời gian
+        const duration = 225; // 3:45 in seconds
+        const currentTime = (duration * value) / 100;
+        currentTimeDisplay.textContent = formatTime(currentTime);
+
+        // Gửi giá trị tới ESP32
+        fetch(`/setProgress?value=${value}`)
+          .then((response) => console.log("Progress updated"))
+          .catch((error) => console.error("Error:", error));
+      });
+
+      progressSlider.addEventListener("change", function () {
+        // Khi người dùng thả thanh trượt
+        const value = this.value;
+        fetch(`/setProgress?value=${value}&final=true`)
+          .then((response) => console.log("Final progress set"))
+          .catch((error) => console.error("Error:", error));
+      });
+
+      function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = Math.floor(seconds % 60);
+        return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
+      }
+
+      // Sleep Timer
+      let sleepTimeout = null;
+      const modal = document.getElementById("sleepTimerModal");
+      const timerDisplay = document.getElementById("timerDisplay");
+      const timeRemaining = document.getElementById("timeRemaining");
+      let currentTimer = null;
+
+      // Mở modal sleep timer
+      document
+        .getElementById("sleepTimerBtn")
+        .addEventListener("click", function () {
+          modal.style.display = "flex";
+          document.querySelector(".timer-options").style.display = "grid";
+          document.querySelector(".custom-timer").style.display = "none";
+          if (currentTimer) {
+            timerDisplay.style.display = "block";
+          } else {
+            timerDisplay.style.display = "none";
+          }
+        });
+
+      // Đóng modal khi click nút close
+      modal.querySelector(".close-btn").addEventListener("click", function () {
+        modal.style.display = "none";
+      });
+
+      // Đóng modal khi click bên ngoài
+      window.addEventListener("click", function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      });
+
+      // Xử lý các nút preset timer
+      document.querySelectorAll(".timer-btn[data-minutes]").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const minutes = parseInt(this.dataset.minutes);
+          setSleepTimer(minutes);
+          modal.style.display = "none";
+        });
+      });
+
+      // Nút custom timer
+      document
+        .querySelector(".timer-btn.custom")
+        .addEventListener("click", function () {
+          document.querySelector(".timer-options").style.display = "none";
+          document.querySelector(".custom-timer").style.display = "flex";
+        });
+
+      // Nút set custom timer
+      document
+        .querySelector(".timer-btn.set-custom")
+        .addEventListener("click", function () {
+          const minutes = parseInt(
+            document.getElementById("customMinutes").value
+          );
+          if (minutes > 0 && minutes <= 180) {
+            setSleepTimer(minutes);
+            modal.style.display = "none";
+          } else {
+            alert("Vui lòng nhập thời gian từ 1 đến 180 phút");
+          }
+        });
+
+      // Nút cancel timer
+      document
+        .querySelector(".timer-btn.cancel")
+        .addEventListener("click", function () {
+          if (currentTimer) {
+            clearTimeout(currentTimer);
+            currentTimer = null;
+            document.getElementById("sleepTimerBtn").classList.remove("active");
+            timerDisplay.style.display = "none";
+            fetch("/cancelSleepTimer");
+          }
+          modal.style.display = "none";
+        });
+
+      function setSleepTimer(minutes) {
+        if (currentTimer) {
+          clearTimeout(currentTimer);
+        }
+
+        const startTime = Date.now();
+        const endTime = startTime + minutes * 60000;
+
+        document.getElementById("sleepTimerBtn").classList.add("active");
+        timerDisplay.style.display = "block";
+
+        function updateDisplay() {
+          const remaining = Math.max(0, endTime - Date.now());
+          const mins = Math.floor(remaining / 60000);
+          const secs = Math.floor((remaining % 60000) / 1000);
+          timeRemaining.textContent = `${mins}:${secs
+            .toString()
+            .padStart(2, "0")}`;
+
+          if (remaining > 0) {
+            currentTimer = requestAnimationFrame(updateDisplay);
+          } else {
+            currentTimer = null;
+            document.getElementById("sleepTimerBtn").classList.remove("active");
+            timerDisplay.style.display = "none";
+            fetch("/sleepTimerExpired");
+          }
+        }
+
+        updateDisplay();
+        fetch(`/setSleepTimer?minutes=${minutes}`);
+      }
+
+      // WiFi modal
+      const wifiModal = document.getElementById("wifiModal");
+      const wifiConnectForm = document.querySelector(".wifi-connect-form");
+      const wifiCloseBtn = wifiModal.querySelector(".close-btn");
+
+      wifiCloseBtn.addEventListener("click", closeWiFiModal);
+
+      window.addEventListener("click", function (event) {
+        if (event.target == wifiModal) {
+          closeWiFiModal();
+        }
+      });
+
+      function closeWiFiModal() {
+        wifiModal.style.display = "none";
+        document.querySelector(".wifi-connect-form").style.display = "none";
+        document.getElementById("wifiPassword").value = "";
+      }
+
+      // Escape key handler
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          if (modal.style.display === "flex") modal.style.display = "none";
+          if (wifiModal.style.display === "flex") closeWiFiModal();
+        }
+      });
+
+      function scanWiFi() {
+        console.log("hihi");
+        const wifiList = document.querySelector(".wifi-list");
+        wifiList.innerHTML = '<div class="loading">Scanning...</div>';
+
+        fetch("/scanWiFi")
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then((networks) => {
+            wifiList.innerHTML = "";
+            if (!Array.isArray(networks) || networks.length === 0) {
+              wifiList.innerHTML =
+                '<div class="no-networks">No networks found</div>';
+              return;
+            }
+
+            networks.forEach((network) => {
+              const div = document.createElement("div");
+              div.className = "wifi-network";
+              div.innerHTML = `
+                        <span class="network-name">${network.ssid}</span>
+                        <span class="signal-strength">${network.rssi}dBm</span>
+                    `;
+              div.addEventListener("click", () =>
+                showConnectForm(network.ssid)
+              );
+              wifiList.appendChild(div);
+            });
+          })
+          .catch((error) => {
+            console.error("Error scanning WiFi:", error);
+            wifiList.innerHTML =
+              '<div class="error">Error scanning networks. Please try again.</div>';
+          });
+      }
+
+      function showConnectForm(ssid) {
+        document.getElementById("selectedNetwork").value = ssid;
+        wifiConnectForm.style.display = "block";
+      }
+
+      document
+        .querySelector(".wifi-btn.connect")
+        .addEventListener("click", function () {
+          const ssid = document.getElementById("selectedNetwork").value;
+          const password = document.getElementById("wifiPassword").value;
+          fetch("/connectWiFi", {
+            method: "POST",
+            body: JSON.stringify({ ssid, password }),
+            headers: { "Content-Type": "application/json" },
+          })
+            .then((response) => response.text())
+            .then((result) => {
+              alert(result);
+              if (result === "Connected successfully") {
+                wifiModal.style.display = "none";
+              }
+            });
+        });
+    </script>
+  </body>
+</html>
